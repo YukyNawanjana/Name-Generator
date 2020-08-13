@@ -5,20 +5,20 @@ function loadNames(e){
     e.preventDefault();
 
     // REad the Values from the form and create the variable
-    const origin = document.getElementById('country').value;
-    const genre = document.getElementById('genre').value;
+    const country = document.getElementById('country').value;
+    const gender = document.getElementById('genre').value;
     const amount = document.getElementById('quantity').value;
 
     //bild the url
     let url = 'https://cybertek-ui-names.herokuapp.com/api/?';
     //Read the orgin and apend to the url;
     //Read The country
-    if(origin !==''){
-        url +=`region=${origin}&`;
+    if(country !==''){
+        url +=`region=${country}&`;
     }
     //read The gender
-    if(genre !==''){
-        url +=`gender=${genre}&`;
+    if(gender !==''){
+        url +=`gender=${gender}&`;
     }
     //Read the Amount
     if(amount !==''){
@@ -35,14 +35,16 @@ function loadNames(e){
     xhr.onload = function(){
        if(this.status === 200){
             const names = JSON.parse(this.responseText);
-            let output = '<h2> Geenerated Names </h2>';
+            let output = '<div class="card text-center pt-3 mb-2">'
+                 output += `<h2 class="text-success">${country}'s ${gender} Name List </h2>`;
                 output +='<ul class="list">'
                     names.forEach(name => {
                         output +=`
-                                <li>${name.name}</li>
+                                <li class="text-primary">${name.name}</li>
                                 `;
                     });
                 output +='</ul>';
+                output +='</div>';
             document.getElementById('result').innerHTML = output;
        }
     }
