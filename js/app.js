@@ -45,7 +45,14 @@ function loadNames(e){
                     });
                 output +='</ul>';
                 output +='</div>';
-            document.getElementById('result').innerHTML = output;
+            const spinner = document.querySelector('#loading');
+            spinner.style.display = "block";
+            spinner.classList.add('text-center');
+            setTimeout(function(){
+                spinner.style.display = "none";
+                document.getElementById('result').innerHTML = output;
+            }, 2000);
+            
        }
     }
     //send the request
