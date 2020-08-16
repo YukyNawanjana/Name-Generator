@@ -48,9 +48,11 @@ function loadNames(e){
             const spinner = document.querySelector('#loading');
             spinner.style.display = "block";
             spinner.classList.add('text-center');
+            document.getElementById('result').style.display = "none";
             setTimeout(function(){
                 spinner.style.display = "none";
                 document.getElementById('result').innerHTML = output;
+                document.getElementById('result').style.display = "block";
             }, 2000);
             
        }
