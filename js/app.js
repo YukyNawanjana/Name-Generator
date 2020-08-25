@@ -1,7 +1,30 @@
+const countrys = ["Argentina","Brazil","Colombia","Costa Rica","France","Italy","Mexico","Portugal","United States","India","Japan"];
 document.querySelector('#generate-names').addEventListener('submit', loadNames);
+
+
+eventListener();
+
+function eventListener(){
+    //add options html
+    document.addEventListener('DOMContentLoaded', function(){
+       
+        const countryHtml = document.getElementById('country');
+        countrys.forEach(country =>{
+            const option = document.createElement('option');
+            option.value = country;
+            option.textContent = `${country}`;
+            countryHtml.appendChild(option);
+        });
+    });
+}
+
+
+
 
 //Execute the function to query the API
 function loadNames(e){
+    
+
     e.preventDefault();
 
     // REad the Values from the form and create the variable
